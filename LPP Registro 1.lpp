@@ -1,0 +1,214 @@
+registro reg_empleados
+    cadena[10] codigo
+    cadena[20] apellidos
+    cadena[20] nombres
+    cadena[30] direccion
+    cadena[10] telefono
+    entero horas_trabajo
+    real valor_horas
+fin registro
+
+reg_empleados empleado
+
+procedimiento corrector (var reg_empleados empleado)
+    caracter dato, exit
+    entero i, e, r
+inicio
+    i <- 9
+    e <- 10
+    r <- 11
+    llamar posicionar_cursor(37,1)
+    escriba "Que dato desea cambiar"
+    llamar posicionar_cursor(37,2)
+    escriba "1) Codigo"
+    llamar posicionar_cursor(37,3)
+    escriba "2) Nombres"
+    llamar posicionar_cursor(37,4)
+    escriba "3) Apellidos"
+    llamar posicionar_cursor(37,5)
+    escriba "4) Telefono"
+    llamar posicionar_cursor(37,6)
+    escriba "5) Direccion"
+    llamar posicionar_cursor(37,7)
+    escriba "6) Horas Trabajadas"
+    llamar posicionar_cursor(37,8)
+    escriba "7) Valor Horas"
+    repita
+        llamar posicionar_cursor(37,i)
+        escriba ": "
+        lea  dato
+        caso dato
+            '1' : llamar posicionar_cursor(37,e)
+                  escriba "Codigo: "
+                  lea empleado.codigo
+            '2' : llamar posicionar_cursor(37,e)
+                  escriba "Nombres: "
+                  lea empleado.nombres
+            '3' : llamar posicionar_cursor(37,e)
+                  escriba "Apellidos: "
+                  lea empleado.apellidos
+            '4' : llamar posicionar_cursor(37,e)
+                  escriba "Telefono: "
+                  lea empleado.telefono
+            '5' : llamar posicionar_cursor(37,e)
+                  escriba "Direccion: "
+                  lea empleado.direccion
+            '6' : llamar posicionar_cursor(37,e)
+                  escriba "Horas trabajadas: "
+                  lea empleado.horas_trabajo
+            '7' : llamar posicionar_cursor(37,e)
+                  escriba "Valor por Hora: "
+                  lea empleado.valor_horas
+        fin caso
+        llamar posicionar_cursor(37,r)
+        escriba "Desea cambiar otro dato(Y/N) "
+        lea exit
+        i <- i + 3
+        e <- e + 3
+        r <- r + 3
+    hasta (exit = 'N') o (exit = 'n')
+fin
+
+procedimiento marco (var reg_empleados empleado)
+    entero i,columna1,columna2,fila1,fila2
+    caracter a
+inicio
+    columna1 <- 1
+    columna2 <- 45
+    fila1 <- 1
+    fila2 <- 18
+    para i <- columna1 hasta columna2 haga
+        llamar color_fondo(15)
+        llamar posicionar_cursor(i,fila1)
+        escriba "-"
+        llamar posicionar_cursor(i,fila2)
+        escriba "-"
+        llamar posicionar_cursor(i,4)
+        escriba "-"
+        llamar posicionar_cursor(i,6)
+        escriba "-"
+        llamar posicionar_cursor(i,8)
+        escriba "-"
+        llamar posicionar_cursor(i,10)
+        escriba "-"
+        llamar posicionar_cursor(i,12)
+        escriba "-"
+        llamar posicionar_cursor(i,14)
+        escriba "-"
+        llamar posicionar_cursor(i,16)
+        escriba "-"
+    fin para
+    
+    para i <- fila1 hasta fila2 haga
+        llamar posicionar_cursor(columna1,i)
+        escriba "|"
+        llamar posicionar_cursor(columna2,i)
+        escriba "|"
+    fin para
+    
+     para i <- 4 hasta 18 haga
+        llamar posicionar_cursor(20,i)
+        escriba "|"
+    fin para
+    llamar texto_marco (empleado)
+    llamar posicionar_cursor(10,17)
+    escriba " Enter para continuar "
+    lea a
+fin
+
+procedimiento texto_marco (var reg_empleados empleado)
+    real pago
+inicio
+    llamar posicionar_cursor(9,2)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba "E   M   P   L   E   A   D   O"
+    llamar posicionar_cursor(2,5)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba "Codigo"
+    llamar posicionar_cursor(21,5)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba empleado.codigo
+    llamar posicionar_cursor(2,7)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba "Nombres"
+    llamar posicionar_cursor(21,7)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba empleado.nombres
+    llamar posicionar_cursor(2,9)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba "Apellidos"
+    llamar posicionar_cursor(21,9)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba empleado.apellidos
+    llamar posicionar_cursor(2,11)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba "Telefono"
+    llamar posicionar_cursor(21,11)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba empleado.telefono
+    llamar posicionar_cursor(2,13)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba "Direccion"
+    llamar posicionar_cursor(21,13)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba empleado.direccion
+    llamar posicionar_cursor(2,15)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba "Pago"
+    pago <- empleado.horas_trabajo * empleado.valor_horas
+    llamar posicionar_cursor(21,15)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba pago
+fin
+
+procedimiento datos (var reg_empleados empleado)
+    caracter exit, pass
+inicio
+    repita
+        escriba "Codigo: "
+        lea empleado.codigo
+        escriba "Nombres: "
+        lea empleado.nombres
+        escriba "Apellidos: "
+        lea empleado.apellidos
+        escriba "Telefono: "
+        lea empleado.telefono
+        escriba "Direccion: "
+        lea empleado.direccion 
+        escriba "Horas trabajadas: "
+        lea empleado.horas_trabajo
+        escriba "Valor por Hora: "
+        lea empleado.valor_horas
+        escriba "Los datos esta correctos(Y/N) "
+        lea pass
+        si (pass = 'N') o (pass = 'n') entonces
+            llamar corrector(empleado)
+        fin si
+        llamar limpiar_pantalla
+        llamar marco(empleado)
+        llamar nueva_linea
+        llamar limpiar_pantalla 
+        escriba "Deasea repetir el procceso(Y/N) "
+        lea exit
+        llamar limpiar_pantalla
+    hasta (exit = 'N') o (exit = 'n')
+fin
+
+inicio
+   escriba "Bienvenido a registo de empleados"
+   llamar nueva_linea
+   llamar datos (empleado)
+fin

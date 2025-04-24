@@ -1,0 +1,277 @@
+ registro reg_vehiculos
+    cadena [6] placa
+    cadena [20] clase
+    cadena [20] marca
+    cadena [20] linea
+    cadena [30] num_motor
+    cadena [30] ser_motor
+    cadena [30] num_chasis
+    entero cap_pasajeros
+    entero modelo
+    real cilindraje
+fin registro
+
+reg_vehiculos vehiculo
+
+procedimiento corrector (var reg_vehiculos vehiculo)
+    caracter dato,exit
+    entero i, e, r
+inicio
+    i <- 12
+    e <- 13
+    r <- 14
+    llamar posicionar_cursor(42,1)
+    escriba "Que dato desea cambiar"
+    llamar posicionar_cursor(42,2)
+    escriba "1) Placa"
+    llamar posicionar_cursor(42,3)
+    escriba "2) Tipo"
+    llamar posicionar_cursor(42,4)
+    escriba "3) Linea"
+    llamar posicionar_cursor(42,5)
+    escriba "4) Marca"
+    llamar posicionar_cursor(42,6)
+    escriba "5) Numero del motor"
+    llamar posicionar_cursor(42,7)
+    escriba "6) Serie del motor"
+    llamar posicionar_cursor(42,8)
+    escriba "7) Numero del chasis"
+    llamar posicionar_cursor(42,9)
+    escriba "8) Capasidad max pasajeros/toneladas"
+    llamar posicionar_cursor(42,10)
+    escriba "9) Modelo"
+    llamar posicionar_cursor(42,11)
+    escriba "0) Cilidranje"
+    repita
+        llamar posicionar_cursor(42,i)
+        escriba ": "
+        lea  dato
+        caso dato
+            '1' : llamar posicionar_cursor(42,e)
+                  escriba "Placa: "
+                  lea vehiculo.placa
+            '2' : llamar posicionar_cursor(42,e)
+                  escriba "Tipo: "
+                  lea vehiculo.clase
+            '3' : llamar posicionar_cursor(42,e)
+                  escriba "Linea: "
+                  lea vehiculo.linea
+            '4' : llamar posicionar_cursor(42,e)
+                  escriba "Marca: "
+                  lea vehiculo.marca
+            '5' : llamar posicionar_cursor(42,e)
+                  escriba "Numero del motor: "
+                  lea vehiculo.num_motor
+            '6' : llamar posicionar_cursor(42,e)
+                  escriba "Serie del motor: "
+                  lea vehiculo.ser_motor
+            '7' : llamar posicionar_cursor(42,e)
+                  escriba "Numero del chasis: "
+                  lea vehiculo.num_chasis
+            '8' : llamar posicionar_cursor(42,e)
+                  escriba "Capacidad max pasajeros/toneladas: "
+                  lea vehiculo.cap_pasajeros
+            '9' : llamar posicionar_cursor(42,e)
+                  escriba "Modelo: "
+                  lea vehiculo.modelo
+            '0' : llamar posicionar_cursor(42,e)
+                  escriba "Cilindraje: "
+                  lea vehiculo.cilindraje
+        fin caso
+        llamar posicionar_cursor(42,r)
+        escriba "Desea cambiar otro dato(Y/N) "
+        lea exit
+        i <- i + 3
+        e <- e + 3
+        r <- r + 3
+    hasta (exit = 'N') o (exit = 'n')
+fin
+
+procedimiento marco (var reg_vehiculos vehiculo)
+    entero i,columna1,columna2,fila1,fila2
+    caracter a
+inicio
+    columna1 <- 1
+    columna2 <- 45
+    fila1 <- 1
+    fila2 <- 26
+    llamar color_fondo(15)
+    para i <- columna1 hasta columna2 haga
+        llamar posicionar_cursor(i,fila1)
+        escriba "-"
+        llamar posicionar_cursor(i,fila2)
+        escriba "-"
+        llamar posicionar_cursor(i,4)
+        escriba "-"
+        llamar posicionar_cursor(i,6)
+        escriba "-"
+        llamar posicionar_cursor(i,8)
+        escriba "-"
+        llamar posicionar_cursor(i,10)
+        escriba "-"
+        llamar posicionar_cursor(i,12)
+        escriba "-"
+        llamar posicionar_cursor(i,14)
+        escriba "-"
+        llamar posicionar_cursor(i,16)
+        escriba "-"
+        llamar posicionar_cursor(i,18)
+        escriba "-"
+        llamar posicionar_cursor(i,20)
+        escriba "-"
+        llamar posicionar_cursor(i,22)
+        escriba "-"
+        llamar posicionar_cursor(i,24)
+        escriba "-"
+    fin para
+    
+    para i <- fila1 hasta fila2 haga
+        llamar posicionar_cursor(columna1,i)
+        escriba "|"
+        llamar posicionar_cursor(columna2,i)
+        escriba "|"
+    fin para
+    
+     para i <- 4 hasta 24 haga
+        llamar posicionar_cursor(24,i)
+        escriba "|"
+    fin para
+    llamar texto_marco (vehiculo)
+    llamar posicionar_cursor(11,25)
+    escriba "  Enter para continuar "
+    lea a
+fin
+
+procedimiento texto_marco (var reg_vehiculos vehiculo)
+
+inicio
+    llamar posicionar_cursor(12,2)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba " V  E  H  I  C  U  L  O"
+    llamar posicionar_cursor(2,5)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba "Placa"
+    llamar posicionar_cursor(25,5)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba vehiculo.placa
+    llamar posicionar_cursor(2,7)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba "Tipo"
+    llamar posicionar_cursor(25,7)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba vehiculo.clase
+    llamar posicionar_cursor(2,9)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba "Linea"
+    llamar posicionar_cursor(25,9)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba vehiculo.linea
+    llamar posicionar_cursor(2,11)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba "Marca"
+    llamar posicionar_cursor(25,11)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba vehiculo.marca
+    llamar posicionar_cursor(2,13)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba "Numero motor"
+    llamar posicionar_cursor(25,13)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba vehiculo.num_motor
+    llamar posicionar_cursor(2,15)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba "Serie motor"
+    llamar posicionar_cursor(25,15)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba vehiculo.ser_motor
+    llamar posicionar_cursor(2,17)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba "Numero chasis"
+    llamar posicionar_cursor(25,17)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba vehiculo.num_chasis
+    llamar posicionar_cursor(2,19)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba "Max pasajero/tonelada"
+    llamar posicionar_cursor(25,19)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba vehiculo.cap_pasajeros
+    llamar posicionar_cursor(2,21)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba "Modelo"
+    llamar posicionar_cursor(25,21)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba vehiculo.modelo
+    llamar posicionar_cursor(2,23)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba "Cilindraje"
+    llamar posicionar_cursor(25,23)
+    llamar color_fondo(0)
+    llamar color_texto(15)
+    escriba vehiculo.cilindraje
+fin
+
+procedimiento datos (var reg_vehiculos vehiculo)
+    caracter exit, pass
+inicio
+    repita
+        escriba "Placa: "
+        lea vehiculo.placa
+        escriba "Tipo: "
+        lea vehiculo.clase
+        escriba "Linea: "
+        lea vehiculo.linea
+        escriba "Marca: "
+        lea vehiculo.marca
+        escriba "Numero del motor: "
+        lea vehiculo.num_motor
+        escriba "Serie del motor: "
+        lea vehiculo.ser_motor
+        escriba "Numero del chasis: "
+        lea vehiculo.num_chasis
+        escriba "Capacidad max pasajeros/toneladas: "
+        lea vehiculo.cap_pasajeros
+        escriba "Modelo: "
+        lea vehiculo.modelo
+        escriba "Cilindraje: "
+        lea vehiculo.cilindraje
+        escriba "Los datos esta correctos(Y/N) "
+        lea pass
+        si (pass = 'N') o (pass = 'n') entonces
+            llamar corrector(vehiculo)
+        fin si
+        llamar limpiar_pantalla
+        llamar marco(vehiculo)
+        llamar nueva_linea
+        llamar limpiar_pantalla 
+        escriba "Deasea ingresar otro vehiculo(Y/N) "
+        lea exit
+        llamar limpiar_pantalla
+    hasta (exit = 'N') o (exit = 'n')
+fin
+
+inicio
+   escriba "Bienvenido a Registro de vehiculos"
+   llamar nueva_linea
+   llamar datos(vehiculo)
+fin
